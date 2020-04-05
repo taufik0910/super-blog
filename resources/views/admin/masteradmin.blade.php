@@ -59,26 +59,37 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
          
-          <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Catagory
-              </p>
-            </a>
-          </li>
+               <li class="nav-item">
+                <router-link to="/home" class="nav-link">    
+                  
+                     <i class="nav-icon fas fa-th"></i>
+                     <p>
+                       Dasbord
+                     </p>
+                    </router-link>
+                 </li>
+
+                 <li class="nav-item">
+                  <router-link to="/category-list" class="nav-link">    
+                    
+                       <i class="nav-icon fas fa-th"></i>
+                       <p>
+                         Category
+                       </p>
+                      </router-link>
+                   </li>
 
 
-          <li class="nav-item">
+          {{--  <li class="nav-item">
             <a href="{{ url('/post') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Post
               </p>
             </a>
-          </li>
+          </li>  --}}
           
-         <li class="nav-item">
+         {{--  <li class="nav-item">
          <router-link to="/test" class="nav-link">    
            
               <i class="nav-icon fas fa-th"></i>
@@ -86,7 +97,7 @@
                 testing
               </p>
              </router-link>
-          </li>
+          </li>  --}}
 
         </ul>
       </nav>
