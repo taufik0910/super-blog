@@ -1,5 +1,5 @@
 <?php
-
+// use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+// route auth user login
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// route untuk modul post
+Route ::get('post', 'PostController@all_post');
