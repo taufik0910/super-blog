@@ -11,9 +11,12 @@ window.Vue = require('vue');
 // vue router
 import VueRouter from 'vue-router' 
 Vue.use(VueRouter)
+import{routes} from './routes.js';
 
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+
+
 
 
 const router = new VueRouter({
