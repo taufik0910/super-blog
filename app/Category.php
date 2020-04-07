@@ -4,9 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Category extends Model
 {
      public function posts(){
-        return $this ->hasMany(post:: class, 'id');
+        return $this ->hasMany(Post:: class, 'id');
      }
 }

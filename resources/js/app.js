@@ -1,4 +1,5 @@
 require('./bootstrap');
+
 window.Vue = require('vue');
 // vue router
 import VueRouter from 'vue-router' 
@@ -19,6 +20,7 @@ import{routes} from './routes';
 
 const router = new VueRouter({
     routes, // short for `routes: routes`
+    mode:'hash',
     
   })
 
@@ -26,4 +28,4 @@ const router = new VueRouter({
 const app = new Vue({
     el: '#app',
     router
-}).$mount;
+})

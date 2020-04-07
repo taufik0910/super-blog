@@ -1,6 +1,6 @@
 import AdminHome from './components/admin/AdminHome.vue'
 import categorylist from './components/admin/category/List.vue'
-import categorynew from './components/admin/category/New.vue'
+import addCategory from './components/admin/category/New.vue'
 
 export const routes = [
   {
@@ -12,7 +12,7 @@ export const routes = [
     component: categorylist
   },
   {
-    path:'/add-category', 
-    component: categorynew
+    path:'/add_category', 
+    component: addCategory
   },
   ]

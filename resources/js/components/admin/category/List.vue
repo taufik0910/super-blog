@@ -9,7 +9,7 @@
 
                 <div class="card-tools">
                   <button class="btn btn-primary"> 
-                  <router-link to="/add-category" style="color:#fff">Add Category</router-link>
+                  <router-link to="/add_category" style="color:#fff">Add Category</router-link>
                   </button>
                  
                 </div>
