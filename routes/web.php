@@ -19,5 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// route untuk modul post
+// route untuk modul posting
 Route ::get('post', 'PostController@all_post');
+
+//route untuk modul caegory
+Route ::post('/add-category', 'CategoryController@add_category');
+
+
+

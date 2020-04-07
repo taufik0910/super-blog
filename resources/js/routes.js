@@ -7,7 +7,6 @@ export const routes = [
     path:'/home', 
     component: AdminHome
   },
-
   {
     path:'/category-list', 
     component: categorylist

@@ -1,48 +1,58 @@
 <template>
-    <div >
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row justify-content-around ">
-          <!-- left column -->
-          <div class="col-md-6">
-            <!-- general form elements -->
-            <div class="card card-primary">
+<div class="col-md-6">
+            
+            <div class="card card-info">
               <div class="card-header">
                 <h3 class="card-title">Form Category</h3>
               </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form role="form">
+              <form class="form-horizontal" role="form" @onclick.prevent="categorynew()">
                 <div class="card-body">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Enter Category</label>
-                    <input class="form-control form-control-lg" type="text" placeholder="Enter Category">
+                  <div class="form-group row">
+                    <label for="CategoryId" class="">Category Name</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="CategoryId" placeholder="Add Category" v-model="form.cat_name" name="cat_name">
+                    </div>
                   </div>
-                 
+                  <div class="form-group row">
+                    <div class="offset-sm-2 col-sm-10">
+                    </div>
+                  </div>
                 </div>
-                
-
+              
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-info">Submit</button>
                 </div>
               </form>
             </div>
-
           </div>
           
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
-        
-    </div>
+            
+  
 </template>
 <script>
 export default {
-    name : "New"
-    
+        name:"New",
+        data() {
+          return {
+            form : new Form({
+              cat_name: ''
+            })
+          }
+        },
+        methods: {
+          categorynew(){
+          this.form.post('/add-category')
+          //  .then(({ data }) => { console.log(data) })
+              .then((response)=>{
+                console.log(Response.data)
+              }).catch(()=>{
+                
+              })
+          }
+        },
 }
 </script>
-<style  scoped>
+
+<style lang="stylus">
 
 </style>

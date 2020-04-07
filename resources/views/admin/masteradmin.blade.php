@@ -78,27 +78,6 @@
                        </p>
                       </router-link>
                    </li>
-
-
-          {{--  <li class="nav-item">
-            <a href="{{ url('/post') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Post
-              </p>
-            </a>
-          </li>  --}}
-          
-         {{--  <li class="nav-item">
-         <router-link to="/test" class="nav-link">    
-           
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                testing
-              </p>
-             </router-link>
-          </li>  --}}
-
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
