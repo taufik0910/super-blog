@@ -24,7 +24,7 @@ Route ::get('post', 'PostController@all_post');
 
 //route untuk modul caegory
 
- Route::post('/add-category','CategoryController@add_category');
+Route::post('/add-category','CategoryController@add_category');
 
 
 
