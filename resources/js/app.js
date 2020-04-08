@@ -4,6 +4,11 @@ window.Vue = require('vue');
 // support vuex
 import Vuex from 'vuex'
 Vue.use(Vuex)
+import storeData from "./store/index.js"
+const store = new Vuex.Store(
+storeData
+)
+
     // vue router
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
@@ -21,7 +26,7 @@ window.Form = Form;
 //  sweet alert 
 import Swal from 'sweetalert2'
 window.Swal = Swal
-    //  var
+
 const Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
@@ -42,7 +47,7 @@ window.Toast = Toast
 
 
 
-
+//vue router support
 const router = new VueRouter({
     routes, // short for `routes: routes`
     mode: 'hash',
@@ -52,5 +57,6 @@ const router = new VueRouter({
 
 const app = new Vue({
     el: '#app',
-    router
+    router,
+    store
 })
