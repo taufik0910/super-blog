@@ -6,10 +6,17 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 import storeData from "./store/index.js"
 const store = new Vuex.Store(
-storeData
+    storeData
 )
 
-    // vue router
+// moment js support
+import moment from 'moment'
+Vue.filter('timeformat', (arg) => {
+    return moment(arg).format("MMM Do YYYY");
+
+})
+
+// vue router
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
@@ -17,6 +24,9 @@ import { routes } from './routes';
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('admin-main', require('./components/admin/AdminMaster.vue').default);
+
+
+
 
 //V-Form
 import { Form, HasError, AlertError } from 'vform'
