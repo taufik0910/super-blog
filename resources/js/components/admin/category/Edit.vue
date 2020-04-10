@@ -1,9 +1,10 @@
 <template>
-    
+    <h3>titik titik {{ this.$route.params.categoryid }}</h3>
 </template>
+
 <script>
 export default {
-    name: "View"
+    name: "Edit",
 }
 </script>
 <style scoped>

@@ -21,18 +21,18 @@
                     <tr>
                       <th>SI</th>
                       <th>Category </th>
-                      <th>Date <th>
+                      <th>Date </th>
                       <th>Actions</th> 
                      
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(category,index) in getallCategory" :key="category.id">
+                    <tr v-for="(category,index) in getallCategory" :key="category.id" >
                     <td>{{index+1}}</td>
                     <td>{{category.cat_name}}</td>
                      <td>{{category.created_at | timeformat}}</td>
                       <td>
-                        <a href="" class="badge bg-success">EDIT</a>
+                      <router-link class="badge bg-success" :to=" `/edit_category/ ${category}`">EDIT</router-link>
                         <a href="" @click.prevent="deletecategory(category.id)" class="badge bg-danger">DELETE</a>
                       </td>
                       
@@ -71,7 +71,7 @@ export default {
     title: 'Deleted in successfully'
 })
       }).catch(()=>{
-        
+
       })    
       }
       
