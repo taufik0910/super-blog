@@ -32,7 +32,7 @@
                     <td>{{category.cat_name}}</td>
                      <td>{{category.created_at | timeformat}}</td>
                       <td>
-                      <router-link class="badge bg-success" :to=" `/edit_category/ ${category}`">EDIT</router-link>
+                      <router-link class="badge bg-success" :to=" `/edit_category/ ${category.id}`">EDIT</router-link>
                         <a href="" @click.prevent="deletecategory(category.id)" class="badge bg-danger">DELETE</a>
                       </td>
                       

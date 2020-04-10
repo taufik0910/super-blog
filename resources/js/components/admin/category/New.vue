@@ -55,7 +55,7 @@ export default {
     addCategory() {
       this.form
         .post("/add-category")
-        .then(response => {
+        .then((response)=> {
           this.$router.push("/category-list");
           //                      const Toast = Swal.mixin({
           //   toast: true,

@@ -1,12 +1,79 @@
 <template>
-    <h3>titik titik {{ this.$route.params.categoryid }}</h3>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row justify-content-around">
+        <!-- left column -->
+        <div class="col-md-6">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Edit Category</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form role="form" @submit.prevent="updateCategory()">
+              <div class="card-body">
+                <div class="form-group">
+                  <label>Edit Category</label>
+                  <input
+                    v-model="form.cat_name"
+                    type="text"
+                    name="cat_name"
+                    class="form-control"
+                    :class="{ 'is-invalid': form.errors.has('cat_name') }"
+                  />
+                  <has-error :form="form" field="cat_name"></has-error>
+                </div>
+              </div>
+              <!-- /.card-body -->
+
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">UPDATE</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
 </template>
 
 <script>
 export default {
-    name: "Edit",
-}
-</script>
-<style scoped>
+  name: "Edit",
+  mounted(){
+      axios.get(`/editcategory/${this.$route.params.categoryid}`)
+      .then((response)=>{
+          this.form.fill(response.data.category)
 
+      })
+  },
+  data() {
+    return {
+      form: new Form({
+        cat_name: " "
+      })
+    };
+  },
+  methods: {
+    updateCategory() {
+      this.form.post(`/update-category/${this.$route.params.categoryid}`)
+        .then((response) => {
+          this.$router.push("/category-list")
+          
+          Toast.fire({
+            icon: "success",
+            title: "Category has Ben Update"
+          });
+        })
+        .catch(() => {});
+    }
+  }
+};
+</script>
+
+<style scoped>
 </style>

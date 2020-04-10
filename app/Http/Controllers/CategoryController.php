@@ -35,6 +35,28 @@ class CategoryController extends Controller
             
         }
         
+        public function edit_category($id)
+        {
+            # code...
+            $category = Category::find($id);
+            return response()->json([
+                'category'=>$category
+            ],200);
+        }
+
+        public function update_category(Request $request, $id)
+        {
+            # code...
+                
+        $this->validate($request,[
+            'cat_name'=>'required|min:3|max:50|unique:categories'
+            ]);
+                $category = Category::find($id);
+                $category->cat_name = $request->cat_name;
+                $category->save();
+
+        }
+        
         
     }
     
