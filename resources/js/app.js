@@ -9,12 +9,10 @@ const store = new Vuex.Store(
     storeData
 )
 
-// moment js support
-import moment from 'moment'
-Vue.filter('timeformat', (arg) => {
-    return moment(arg).format("MMM Do YYYY");
-
-})
+//MOMENT JS IMPORT
+import {
+    filter
+} from './filter'
 
 // vue router
 import VueRouter from 'vue-router'
