@@ -33,10 +33,10 @@
                   <tbody>
                     <tr v-for="(posts,index) in ssgetallpost" :key="posts.id" >
                     <td>{{index+1}}</td>
-                    <td>user name </td>
-                    <td>Category name</td>
-                    <td>{{posts.title}}</td>
-                    <td>{{posts.description}}</td>
+                    <td v-if="posts.user">{{ posts.user.name }}</td>
+                    <td v-if="posts.category">{{ posts.category.cat_name }}</td>
+                    <td>{{posts.title |sortlength(20," ...")}}</td>
+                    <td>{{posts.description |sortlength(20," ...")}}</td>
                     <td><img :src="posts.photo" alt="" width="40" height="50"></td>
                      
                       <td>

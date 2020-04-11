@@ -59712,13 +59712,27 @@ var render = function() {
                     return _c("tr", { key: posts.id }, [
                       _c("td", [_vm._v(_vm._s(index + 1))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v("user name ")]),
+                      posts.user
+                        ? _c("td", [_vm._v(_vm._s(posts.user.name))])
+                        : _vm._e(),
                       _vm._v(" "),
-                      _c("td", [_vm._v("Category name")]),
+                      posts.category
+                        ? _c("td", [_vm._v(_vm._s(posts.category.cat_name))])
+                        : _vm._e(),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(posts.title))]),
+                      _c("td", [
+                        _vm._v(
+                          _vm._s(_vm._f("sortlength")(posts.title, 20, " ..."))
+                        )
+                      ]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(posts.description))]),
+                      _c("td", [
+                        _vm._v(
+                          _vm._s(
+                            _vm._f("sortlength")(posts.description, 20, " ...")
+                          )
+                        )
+                      ]),
                       _vm._v(" "),
                       _c("td", [
                         _c("img", {
@@ -76663,6 +76677,9 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.filter('timeformat', function (arg) {
   return moment__WEBPACK_IMPORTED_MODULE_0___default()(arg).format("MMM Do YYYY");
+});
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.filter('sortlength', function (text, length, suffix) {
+  return text.substring(0, length) + suffix;
 });
 
 /***/ }),
