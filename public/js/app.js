@@ -59236,12 +59236,103 @@ var staticRenderFns = [
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _vm._v("\r\n          pantettee\r\n        ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-footer" }, [
-            _vm._v("\r\n          Footer\r\n        ")
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-lg-3 col-6" }, [
+              _c("div", { staticClass: "small-box bg-info" }, [
+                _c("div", { staticClass: "inner" }, [
+                  _c("h3", [_vm._v("150")]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("New Orders")])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "icon" }, [
+                  _c("i", { staticClass: "ion ion-bag" })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  { staticClass: "small-box-footer", attrs: { href: "#" } },
+                  [
+                    _vm._v("More info "),
+                    _c("i", { staticClass: "fas fa-arrow-circle-right" })
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-3 col-6" }, [
+              _c("div", { staticClass: "small-box bg-success" }, [
+                _c("div", { staticClass: "inner" }, [
+                  _c("h3", [
+                    _vm._v("53"),
+                    _c("sup", { staticStyle: { "font-size": "20px" } }, [
+                      _vm._v("%")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Bounce Rate")])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "icon" }, [
+                  _c("i", { staticClass: "ion ion-stats-bars" })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  { staticClass: "small-box-footer", attrs: { href: "#" } },
+                  [
+                    _vm._v("More info "),
+                    _c("i", { staticClass: "fas fa-arrow-circle-right" })
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-3 col-6" }, [
+              _c("div", { staticClass: "small-box bg-warning" }, [
+                _c("div", { staticClass: "inner" }, [
+                  _c("h3", [_vm._v("44")]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("User Registrations")])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "icon" }, [
+                  _c("i", { staticClass: "ion ion-person-add" })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  { staticClass: "small-box-footer", attrs: { href: "#" } },
+                  [
+                    _vm._v("More info "),
+                    _c("i", { staticClass: "fas fa-arrow-circle-right" })
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-3 col-6" }, [
+              _c("div", { staticClass: "small-box bg-danger" }, [
+                _c("div", { staticClass: "inner" }, [
+                  _c("h3", [_vm._v("65")]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Unique Visitors")])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "icon" }, [
+                  _c("i", { staticClass: "ion ion-pie-graph" })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  { staticClass: "small-box-footer", attrs: { href: "#" } },
+                  [
+                    _vm._v("More info "),
+                    _c("i", { staticClass: "fas fa-arrow-circle-right" })
+                  ]
+                )
+              ])
+            ])
           ])
         ])
       ])
@@ -59689,9 +59780,9 @@ var render = function() {
                     "router-link",
                     {
                       staticStyle: { color: "#fff" },
-                      attrs: { to: "/add_category" }
+                      attrs: { to: "/add_post" }
                     },
-                    [_vm._v("Add Category")]
+                    [_vm._v("Add New Post")]
                   )
                 ],
                 1
@@ -59752,7 +59843,7 @@ var render = function() {
                             "router-link",
                             {
                               staticClass: "badge bg-success",
-                              attrs: { to: "/edit_category/ " + posts.id }
+                              attrs: { to: "/edit_post/ " + posts.id }
                             },
                             [_vm._v("EDIT")]
                           ),

@@ -9,7 +9,7 @@
 
                 <div class="card-tools">
                   <button class="btn btn-primary"> 
-                  <router-link to="/add_category" style="color:#fff">Add Category</router-link>
+                  <router-link to="/add_post" style="color:#fff">Add New Post</router-link>
                   </button>
                  
                 </div>
@@ -40,7 +40,7 @@
                     <td><img :src="posts.photo" alt="" width="40" height="50"></td>
                      
                       <td>
-                      <router-link class="badge bg-success" :to=" `/edit_category/ ${posts.id}`">EDIT</router-link>
+                      <router-link class="badge bg-success" :to=" `/edit_post/ ${posts.id}`">EDIT</router-link>
                         <a href="" @click.prevent="deletecategory(posts.id)" class="badge bg-danger">DELETE</a>
                       </td>
                       
