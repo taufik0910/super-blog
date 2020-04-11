@@ -32,7 +32,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <router-link to="/home" class="nav-link">
+            <router-link to="/" class="nav-link">
                 <i class="nav-icon fa fa-dashboard"></i>
                 <img src="{{asset('assets/admin/default/images.png')}}"
                 alt="AdminLTE Logo"
@@ -55,7 +55,7 @@
                         <!-- Add icons to the links using the .nav-icon class
                             with font-awesome or any other icon font library -->
                             <li class="nav-item has-treeview">
-                                <router-link to="/home" class="nav-link">
+                                <router-link to="/" class="nav-link">
                                     <i class="nav-icon fa fa-dashboard"></i>
                                     <p>
                                         Dashboard
