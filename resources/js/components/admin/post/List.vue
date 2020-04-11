@@ -2,42 +2,46 @@
     <section class="content">
     <div class="row justify-content-around">
       
-          <div class="col-10">
+          <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Posts List</h3>
+                <h3 class="card-title">Category List</h3>
 
                 <div class="card-tools">
                   <button class="btn btn-primary"> 
-                  <router-link to="/add_post" style="color:#fff">Add Post</router-link>
+                  <router-link to="/add_category" style="color:#fff">Add Category</router-link>
                   </button>
                  
                 </div>
               </div>
               <!-- /.card-header -->
-              <div class="card-body table-responsive p-0">
+           <div class="card-body table-responsive p-0">
                 <table class="table table-hover table-bordered table-hover">
                   <thead>
                     <tr>
                       <th>SI</th>
-                      <th>User </th>
-                      <th>Title</th>
+                      <th>user name </th>
+                      <th>Category name </th>
+                      <th>Title </th>
                       <th>Description </th>
                       <th>Photo </th>
+                      
                       <th>Actions</th> 
                      
                     </tr>
                   </thead>
                   <tbody>
-                    <tr >
-                    <td>1</td>
-                    <td>category user</td>
-                     <td>Post Title</td>
-                     <td>Post Description</td>
-                     <td>photo</td>
-                      <td> 
-                        <router-link class="badge bg-success" to="/edit_post/">EDIT</router-link>
-                        <a href=""  class="badge bg-danger">DELETE</a>
+                    <tr v-for="(posts,index) in ssgetallpost" :key="posts.id" >
+                    <td>{{index+1}}</td>
+                    <td>user name </td>
+                    <td>Category name</td>
+                    <td>{{posts.title}}</td>
+                    <td>{{posts.description}}</td>
+                    <td><img :src="posts.photo" alt="" width="40" height="50"></td>
+                     
+                      <td>
+                      <router-link class="badge bg-success" :to=" `/edit_category/ ${posts.id}`">EDIT</router-link>
+                        <a href="" @click.prevent="deletecategory(posts.id)" class="badge bg-danger">DELETE</a>
                       </td>
                       
                     </tr>
@@ -56,10 +60,23 @@
 
 <script>
 export default {
-    name:"List"
-    
+    name:"List",
+    mounted() {
+         this.$store.dispatch("getallpost")
+        
+    },
+    computed: {
+        ssgetallpost(){
+        return this.$store.getters.getPost
+        
+      }
+        
+    },
+    methods: {
+        
+    },
 }
 </script>
-<style lang="stylus" scoped>
+<style  scoped>
 
 </style>

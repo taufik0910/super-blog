@@ -2056,8 +2056,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "List"
+  name: "List",
+  mounted: function mounted() {
+    this.$store.dispatch("getallpost");
+  },
+  computed: {
+    ssgetallpost: function ssgetallpost() {
+      return this.$store.getters.getPost;
+    }
+  },
+  methods: {}
 });
 
 /***/ }),
@@ -59662,10 +59675,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "content" }, [
     _c("div", { staticClass: "row justify-content-around" }, [
-      _c("div", { staticClass: "col-10" }, [
+      _c("div", { staticClass: "col-12" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
-            _c("h3", { staticClass: "card-title" }, [_vm._v("Posts List")]),
+            _c("h3", { staticClass: "card-title" }, [_vm._v("Category List")]),
             _vm._v(" "),
             _c("div", { staticClass: "card-tools" }, [
               _c(
@@ -59676,9 +59689,9 @@ var render = function() {
                     "router-link",
                     {
                       staticStyle: { color: "#fff" },
-                      attrs: { to: "/add_post" }
+                      attrs: { to: "/add_category" }
                     },
-                    [_vm._v("Add Post")]
+                    [_vm._v("Add Category")]
                   )
                 ],
                 1
@@ -59693,43 +59706,64 @@ var render = function() {
               [
                 _vm._m(0),
                 _vm._v(" "),
-                _c("tbody", [
-                  _c("tr", [
-                    _c("td", [_vm._v("1")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("category user")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("Post Title")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("Post Description")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("photo")]),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            staticClass: "badge bg-success",
-                            attrs: { to: "/edit_post/" }
-                          },
-                          [_vm._v("EDIT")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "badge bg-danger",
-                            attrs: { href: "" }
-                          },
-                          [_vm._v("DELETE")]
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                ])
+                _c(
+                  "tbody",
+                  _vm._l(_vm.ssgetallpost, function(posts, index) {
+                    return _c("tr", { key: posts.id }, [
+                      _c("td", [_vm._v(_vm._s(index + 1))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("user name ")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("Category name")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(posts.title))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(posts.description))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("img", {
+                          attrs: {
+                            src: posts.photo,
+                            alt: "",
+                            width: "40",
+                            height: "50"
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "badge bg-success",
+                              attrs: { to: "/edit_category/ " + posts.id }
+                            },
+                            [_vm._v("EDIT")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "badge bg-danger",
+                              attrs: { href: "" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.deletecategory(posts.id)
+                                }
+                              }
+                            },
+                            [_vm._v("DELETE")]
+                          )
+                        ],
+                        1
+                      )
+                    ])
+                  }),
+                  0
+                )
               ]
             )
           ])
@@ -59747,9 +59781,11 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("SI")]),
         _vm._v(" "),
-        _c("th", [_vm._v("User ")]),
+        _c("th", [_vm._v("user name ")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Title")]),
+        _c("th", [_vm._v("Category name ")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Title ")]),
         _vm._v(" "),
         _c("th", [_vm._v("Description ")]),
         _vm._v(" "),
@@ -76693,11 +76729,15 @@ var routes = [{
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: {
-    category: []
+    category: [],
+    post: []
   },
   getters: {
     getCategory: function getCategory(state) {
       return state.category;
+    },
+    getPost: function getPost(state) {
+      return state.post;
     }
   },
   actions: {
@@ -76705,11 +76745,20 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/category').then(function (response) {
         context.commit('categories', response.data.categories);
       });
+    },
+    getallpost: function getallpost(context) {
+      axios.get('/posted').then(function (response) {
+        //console.log(response.data)
+        context.commit('post', response.data.posts);
+      });
     }
   },
   mutations: {
     categories: function categories(state, data) {
       return state.category = data;
+    },
+    post: function post(state, payload) {
+      return state.post = payload;
     }
   }
 });

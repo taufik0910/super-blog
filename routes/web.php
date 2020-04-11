@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // route untuk modul posting
-Route ::get('post', 'PostController@all_post');
+
 
 //route untuk modul caegory
 Route::get('/category','CategoryController@all_category');
@@ -29,5 +29,7 @@ Route::get('/category/{id}','CategoryController@delete_category');
 Route::get('/editcategory/{id}','CategoryController@edit_category');
 Route::post('/update-category/{id}','CategoryController@update_category');
 
+//route untuk modul post
+Route::get('/posted','PostController@all_post');
 
 
