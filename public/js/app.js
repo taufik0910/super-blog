@@ -2154,7 +2154,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "New",
   data: function data() {
@@ -2176,11 +2175,25 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    addPosting: function addPosting() {
+    changePhoto: function changePhoto(event) {
       var _this = this;
 
+      var file = event.target.files[0];
+      var reader = new FileReader();
+
+      reader.onload = function (event) {
+        // The file's text will be printed here
+        _this.form.photo = event.target.result;
+      }; //reader.readAsText(file);
+
+
+      reader.readAsDataURL(file);
+    },
+    addPosting: function addPosting() {
+      var _this2 = this;
+
       this.form.post("/add_post").then(function (response) {
-        _this.$router.push("/post-list");
+        _this2.$router.push("/post-list");
 
         Toast.fire({
           icon: "success",
@@ -60193,22 +60206,35 @@ var render = function() {
                   _vm._v(" "),
                   _c("label", [_vm._v(" Select Photo")]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "custom-file" }, [
-                    _c("input", {
-                      staticClass: "custom-file-input",
-                      class: { "is-invalid": _vm.form.errors.has("photo") },
-                      attrs: { type: "file", id: "customFile", name: "photo" }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "custom-file-label",
-                        attrs: { for: "customFile" }
-                      },
-                      [_vm._v("Choose file")]
-                    )
-                  ])
+                  _c(
+                    "div",
+                    { staticClass: "from-group" },
+                    [
+                      _c("input", {
+                        class: { "is-invalid": _vm.form.errors.has("photo") },
+                        attrs: { type: "file", name: "photo" },
+                        on: {
+                          change: function($event) {
+                            return _vm.changePhoto($event)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("has-error", {
+                        attrs: { form: _vm.form, field: "photo" }
+                      }),
+                      _vm._v(" "),
+                      _c("img", {
+                        attrs: {
+                          src: _vm.form.photo,
+                          alt: "",
+                          width: "160",
+                          height: "160"
+                        }
+                      })
+                    ],
+                    1
+                  )
                 ]),
                 _vm._v(" "),
                 _vm._m(1)

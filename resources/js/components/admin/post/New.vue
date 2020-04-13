@@ -53,14 +53,13 @@
                       </div>
                     </div>
                 <label> Select Photo</label>
-                <div class="custom-file">
-                
-                      <input type="file" 
-                      class="custom-file-input" 
-                      id="customFile" 
+                <div class="from-group">
+                      <input type="file"
+                     @change="changePhoto($event)"
                       name="photo"
                       :class="{ 'is-invalid': form.errors.has('photo') }">
-                      <label class="custom-file-label" for="customFile">Choose file</label>
+                       <has-error :form="form" field="photo"></has-error>
+                       <img :src="form.photo" alt="" width="160" height="160"> 
                     </div>
                 
               </div>
@@ -107,6 +106,18 @@ export default {
         
     },
     methods: {
+        changePhoto(event){
+           let file = event.target.files[0];
+           let reader = new FileReader();
+          reader.onload = event => {
+    // The file's text will be printed here
+      this.form.photo = event.target.result
+  };
+  //reader.readAsText(file);
+  reader.readAsDataURL(file);
+  },
+
+
         addPosting() {
       this.form
         .post("/add_post")
