@@ -21,6 +21,10 @@ class PostController extends Controller
     public function add_posted(Request $request)
     {
         # code...
+        $this->validate($request,[
+            'title'=>'required|min:3|max:50|unique:posts',
+            'description'=>'required|min:3|max:50|unique:posts'
+            ]);
             $strpos =strpos($request->photo, ';');
             $sub = substr($request->photo,0, $strpos);
             $ex =explode('/',$sub)[1];
