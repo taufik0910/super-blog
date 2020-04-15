@@ -2149,7 +2149,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "New",
   data: function data() {
@@ -2193,7 +2192,7 @@ __webpack_require__.r(__webpack_exports__);
 
         Toast.fire({
           icon: "success",
-          title: "Category has Ben insert"
+          title: "new post has Ben insert"
         });
       })["catch"](function () {});
     }
@@ -82625,7 +82624,7 @@ var render = function() {
                         class: {
                           "is-invalid": _vm.form.errors.has("description")
                         },
-                        attrs: { id: "descriptionId" },
+                        attrs: { id: "descriptionId", name: "description" },
                         model: {
                           value: _vm.form.description,
                           callback: function($$v) {
@@ -82642,71 +82641,72 @@ var render = function() {
                     1
                   ),
                   _vm._v(" "),
-                  _c("div", [
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("label", [_vm._v(" Select Category")]),
-                        _vm._v(" "),
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.cat_id,
-                                expression: "form.cat_id"
-                              }
-                            ],
-                            staticClass: "custom-select",
-                            class: {
-                              "is-invalid": _vm.form.errors.has("photo")
-                            },
-                            on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.form,
-                                  "cat_id",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              }
+                  _c(
+                    "div",
+                    { staticClass: "form-group" },
+                    [
+                      _c("label", [_vm._v("Select")]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.cat_id,
+                              expression: "form.cat_id"
                             }
-                          },
-                          [
-                            _c(
-                              "option",
-                              { attrs: { disabled: "", value: "" } },
-                              [_vm._v("select category")]
-                            ),
-                            _vm._v(" "),
-                            _vm._l(_vm.getallCategory, function(category) {
-                              return _c("option", { key: category.id }, [
-                                _vm._v(_vm._s(category.cat_name))
-                              ])
-                            })
                           ],
-                          2
-                        ),
-                        _vm._v(" "),
-                        _c("has-error", {
-                          attrs: { form: _vm.form, field: "cat_id" }
-                        })
-                      ],
-                      1
-                    )
-                  ]),
+                          staticClass: "form-control",
+                          class: {
+                            "is-invalid": _vm.form.errors.has("cat_id")
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.form,
+                                "cat_id",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { disabled: "", value: "" } }, [
+                            _vm._v("Select One")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.getallCategory, function(category) {
+                            return _c(
+                              "option",
+                              {
+                                key: category.id,
+                                domProps: { value: category.id }
+                              },
+                              [_vm._v("option " + _vm._s(category.cat_name))]
+                            )
+                          })
+                        ],
+                        2
+                      ),
+                      _vm._v(" "),
+                      _c("has-error", {
+                        attrs: { form: _vm.form, field: "cat_id" }
+                      })
+                    ],
+                    1
+                  ),
                   _vm._v(" "),
                   _c("label", [_vm._v(" Select Photo")]),
                   _vm._v(" "),

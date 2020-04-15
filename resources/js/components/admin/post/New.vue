@@ -31,23 +31,22 @@
                   <label> Description</label>
                       <markdown-editor 
                       id="descriptionId"
-                      v-model="form.description"  
+                      name="description"
+                      v-model="form.description"
                       :class="{ 'is-invalid': form.errors.has('description') }">
                       </markdown-editor>
                        <has-error :form="form" field="description"></has-error>
                    </div>
 
-                <div >
-                      <!-- select -->
-                      <div class="form-group">
-                        <label> Select Category</label>
-                        <select class="custom-select"  :class="{ 'is-invalid': form.errors.has('photo') }" v-model="form.cat_id">
-                           <option disabled value="">select category</option>
-                          <option v-for="category in getallCategory" v-bind:key="category.id" >{{ category.cat_name }}</option>
-                        </select> 
-                        <has-error :form="form" field="cat_id"></has-error>
-                      </div>
-                    </div>
+               <div class="form-group" >
+                                    <label>Select</label>
+                                    <select class="form-control" :class="{ 'is-invalid': form.errors.has('cat_id') }" v-model="form.cat_id">
+                                        <option disabled value="">Select One</option>
+                                        <option  :value="category.id" v-for="category in getallCategory" v-bind:key="category.id">option {{category.cat_name}}</option>
+
+                                    </select>
+                                    <has-error :form="form" field="cat_id"></has-error>
+                                </div>
                 <label> Select Photo</label>
                 <div class="from-group">
                       <input type="file"
@@ -111,9 +110,7 @@ export default {
   };
   //reader.readAsText(file);
   reader.readAsDataURL(file);
-  },
-
-
+  }, 
         addPosting() {
       this.form
         .post("/add_post")
@@ -123,7 +120,7 @@ export default {
 
           Toast.fire({
             icon: "success",
-            title: "Category has Ben insert"
+            title: "new post has Ben insert"
           });
         })
         .catch(() => {});

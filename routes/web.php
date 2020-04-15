@@ -31,5 +31,6 @@ Route::post('/update-category/{id}','CategoryController@update_category');
 
 //route untuk modul post
 Route::get('/posted','PostController@all_post');
+Route::post('/add_post','PostController@add_posted');
 
 
