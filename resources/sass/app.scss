@@ -1,15 +1,26 @@
-
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 @import '~admin-lte/dist/css/adminlte.css';
-
+//font awesome
+@import '~@fortawesome/fontawesome-free/css/all.css';
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import '~@fortawesome/fontawesome-free/css/brands.css';
+@import '~@fortawesome/fontawesome-free/css/brands.min.css';
+@import '~@fortawesome/fontawesome-free/css/fontawesome.css';
+@import '~@fortawesome/fontawesome-free/css/fontawesome.min.css';
+@import '~@fortawesome/fontawesome-free/css/regular.css';
+@import '~@fortawesome/fontawesome-free/css/regular.min.css';
+@import '~@fortawesome/fontawesome-free/css/solid.css';
+@import '~@fortawesome/fontawesome-free/css/solid.min.css';
+@import '~@fortawesome/fontawesome-free/css/svg-with-js.css';
+@import '~@fortawesome/fontawesome-free/css/svg-with-js.min.css';
+@import '~@fortawesome/fontawesome-free/css/v4-shims.css';
+@import '~@fortawesome/fontawesome-free/css/v4-shims.min.css';
 .navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }

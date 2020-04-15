@@ -27,21 +27,17 @@
                   
                   <has-error :form="form" field="title"></has-error>
                 </div>
-
-                <div class="form-group">
+                  <div class="form-group">
                   <label> Description</label>
-                  <textarea id="descriptionId"
-                    v-model="form.description"
-                    placeholder="add new Description"
-                    
-                    name="description"
-                    class="form-control"
-                    :class="{ 'is-invalid': form.errors.has('description') }">
-                    </textarea>
-                    <has-error :form="form" field="description"></has-error>
-                </div>
+                      <markdown-editor 
+                      id="descriptionId"
+                      v-model="form.description"  
+                      :class="{ 'is-invalid': form.errors.has('description') }">
+                      </markdown-editor>
+                       <has-error :form="form" field="description"></has-error>
+                   </div>
 
-        <div >
+                <div >
                       <!-- select -->
                       <div class="form-group">
                         <label> Select Category</label>

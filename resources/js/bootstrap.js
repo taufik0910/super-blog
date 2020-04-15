@@ -1,4 +1,3 @@
-
 window._ = require('lodash');
 
 /**
@@ -13,6 +12,7 @@ try {
 
     require('bootstrap');
     require('admin-lte');
+    requere('@fortawesome/fontawesome-free');
 } catch (e) {}
 
 /**

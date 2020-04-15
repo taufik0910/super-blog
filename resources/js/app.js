@@ -3,11 +3,18 @@ window.Vue = require('vue');
 
 // support vuex
 import Vuex from 'vuex'
+import { PaginationPlugin } from 'vuex-pagination'
+Vue.use(PaginationPlugin)
 Vue.use(Vuex)
 import storeData from "./store/index.js"
 const store = new Vuex.Store(
     storeData
 )
+
+import 'v-markdown-editor/dist/v-markdown-editor.css';
+import Editor from 'v-markdown-editor'
+// global register
+Vue.use(Editor);
 
 //MOMENT JS IMPORT
 import {
@@ -22,7 +29,6 @@ import { routes } from './routes';
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('admin-main', require('./components/admin/AdminMaster.vue').default);
-
 
 
 
