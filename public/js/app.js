@@ -2174,15 +2174,21 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var file = event.target.files[0];
-      var reader = new FileReader();
+      console.log(file);
 
-      reader.onload = function (event) {
-        // The file's text will be printed here
-        _this.form.photo = event.target.result;
-      }; //reader.readAsText(file);
+      if (file.size > 504876) {
+        Swal.fire('The Internet?', 'That thing is still around?', 'question');
+      } else {
+        var reader = new FileReader();
 
+        reader.onload = function (event) {
+          _this.form.photo = event.target.result;
+        };
 
-      reader.readAsDataURL(file);
+        reader.readAsDataURL(file);
+      }
+
+      ;
     },
     addPosting: function addPosting() {
       var _this2 = this;

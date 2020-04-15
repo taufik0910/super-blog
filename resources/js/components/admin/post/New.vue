@@ -103,13 +103,22 @@ export default {
     methods: {
         changePhoto(event){
            let file = event.target.files[0];
-           let reader = new FileReader();
-          reader.onload = event => {
-    // The file's text will be printed here
-      this.form.photo = event.target.result
-  };
-  //reader.readAsText(file);
-  reader.readAsDataURL(file);
+           console.log(file)
+          if(file.size>504876){
+            Swal.fire(
+          'The Internet?',
+         'That thing is still around?',
+          'question'
+     )
+
+          }else{
+            let reader = new FileReader();
+            reader.onload = event => {
+            this.form.photo = event.target.result
+          }
+           reader.readAsDataURL(file);
+     };
+ 
   }, 
         addPosting() {
       this.form
