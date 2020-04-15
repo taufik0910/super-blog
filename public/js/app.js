@@ -2059,7 +2059,23 @@ __webpack_require__.r(__webpack_exports__);
       return this.$store.getters.getPost;
     }
   },
-  methods: {}
+  methods: {
+    ourImage: function ourImage(img) {
+      return "uploadimage/" + img;
+    },
+    deletePost: function deletePost(id) {
+      var _this = this;
+
+      axios.get('/post-del/' + id).then(function () {
+        _this.$store.dispatch("getallpost");
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Deleted in successfully'
+        });
+      })["catch"](function () {});
+    }
+  }
 });
 
 /***/ }),
@@ -82465,9 +82481,9 @@ var render = function() {
                       _c("td", [
                         _c("img", {
                           attrs: {
-                            src: posts.photo,
+                            src: _vm.ourImage(posts.photo),
                             alt: "",
-                            width: "40",
+                            width: "50",
                             height: "50"
                           }
                         })
@@ -82493,7 +82509,7 @@ var render = function() {
                               on: {
                                 click: function($event) {
                                   $event.preventDefault()
-                                  return _vm.deletecategory(posts.id)
+                                  return _vm.deletePost(posts.id)
                                 }
                               }
                             },

@@ -37,11 +37,11 @@
                     <td v-if="posts.category">{{ posts.category.cat_name }}</td>
                     <td>{{posts.title |sortlength(20," ...")}}</td>
                     <td>{{posts.description |sortlength(20," ...")}}</td>
-                    <td><img :src="posts.photo" alt="" width="40" height="50"></td>
+                    <td><img :src="ourImage(posts.photo)" alt="" width="50" height="50"></td>
                      
                       <td>
                       <router-link class="badge bg-success" :to=" `/edit_post/ ${posts.id}`">EDIT</router-link>
-                        <a href="" @click.prevent="deletecategory(posts.id)" class="badge bg-danger">DELETE</a>
+                        <a href="" @click.prevent="deletePost(posts.id)" class="badge bg-danger">DELETE</a>
                       </td>
                       
                     </tr>
@@ -73,6 +73,22 @@ export default {
         
     },
     methods: {
+      ourImage(img){
+        return "uploadimage/"+img;
+      },
+
+      deletePost(id){
+      axios.get('/post-del/'+id) 
+      .then(()=>{
+         this.$store.dispatch("getallpost")
+        Toast.fire({
+    icon: 'success',
+    title: 'Deleted in successfully'
+})
+      }).catch(()=>{
+
+      })    
+      }
         
     },
 }

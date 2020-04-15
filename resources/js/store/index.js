@@ -27,6 +27,7 @@ export default {
                 .then((response) => {
                     //console.log(response.data)
                     context.commit('post', response.data.posts)
+
                 })
         },
 

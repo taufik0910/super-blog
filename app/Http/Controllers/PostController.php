@@ -23,13 +23,13 @@ class PostController extends Controller
         # code...
         $this->validate($request,[
             'title'=>'required|min:3|max:50|unique:posts',
-            'description'=>'required|min:3|max:50|unique:posts'
+            'description'=>'required|min:3|max:1000|unique:posts'
             ]);
             $strpos =strpos($request->photo, ';');
             $sub = substr($request->photo,0, $strpos);
             $ex =explode('/',$sub)[1];
             $name = time().".".$ex;
-            $img = Image::make($request->photo)->resize(200, 200);
+            $img = Image::make($request->photo)->resize(400, 400);
             $upload_path = public_path()."/uploadimage/";
             $img->save($upload_path.$name);
 
@@ -41,5 +41,18 @@ class PostController extends Controller
             $posted->photo = $name;
             $posted->save();
             return ['message'=>'OK'];
+    }
+
+    public function delete_post($id)
+    {
+        # code...
+        $posting = Post::find($id);
+        $letak_photo = public_path()."/uploadimage/";
+        $identifikasi_photo = $letak_photo. $posting->photo;
+        if (file_exists($identifikasi_photo)) {
+            # code...
+            @unlink($identifikasi_photo);
+        }
+        $posting->delete();
     }
 }

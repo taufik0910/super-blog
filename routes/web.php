@@ -32,5 +32,6 @@ Route::post('/update-category/{id}','CategoryController@update_category');
 //route untuk modul post
 Route::get('/posted','PostController@all_post');
 Route::post('/add_post','PostController@add_posted');
+Route::get('/post-del/{id}','PostController@delete_post');
 
 
