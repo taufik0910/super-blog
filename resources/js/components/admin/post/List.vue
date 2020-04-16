@@ -40,7 +40,7 @@
                     <td><img :src="ourImage(posts.photo)" alt="" width="50" height="50"></td>
                      
                       <td>
-                      <router-link class="badge bg-success" :to=" `/edit_post/ ${posts.id}`">EDIT</router-link>
+                      <router-link class="badge bg-success" :to=" `/edit-post/ ${posts.id}`">EDIT</router-link>
                         <a href="" @click.prevent="deletePost(posts.id)" class="badge bg-danger">DELETE</a>
                       </td>
                       

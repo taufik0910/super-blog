@@ -43,7 +43,7 @@ class PostController extends Controller
             return ['message'=>'OK'];
     }
 
-    public function delete_post($id)
+    public function delete_post($id)    
     {
         # code...
         $posting = Post::find($id);
@@ -55,4 +55,14 @@ class PostController extends Controller
         }
         $posting->delete();
     }
+
+    public function edit_post($id)
+    {
+        # code...
+        $posting = Post::find($id);
+        return response()->json([
+            'post' => $posting
+        ], 200);
+    }
+
 }
