@@ -54,7 +54,7 @@
                       name="photo"
                       :class="{ 'is-invalid': form.errors.has('photo') }">
                        <has-error :form="form" field="photo"></has-error>
-                       <img :src="form.photo" alt="" width="160" height="160"> 
+                       <img :src="updateImage()" alt="" width="160" height="160"> 
                     </div>
                 
               </div>
@@ -89,12 +89,15 @@ export default {
 
     },
     mounted() {
-        axios.get(`/edit-post/${this.$route.params.postid}`)
+      
+      this.$store.dispatch("allCategory")
+    },
+    created() {
+          axios.get(`/edit-post/${this.$route.params.postid}`)
       .then((response)=>{
           this.form.fill(response.data.post)
 
-      }),
-      this.$store.dispatch("allCategory")
+      })
     },
     computed: {
          getallCategory(){
@@ -135,6 +138,15 @@ export default {
           });
         })
         .catch(() => {});
+    },
+    updateImage(){
+        let img = this.form.photo;
+        if(img.length > 100){
+                return this.form.photo
+        }else{
+                return `uploadpath/${this.form.photo}`
+
+        }
     }
         
     },

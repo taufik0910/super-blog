@@ -2056,11 +2056,14 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
+    this.$store.dispatch("allCategory");
+  },
+  created: function created() {
     var _this = this;
 
     axios.get("/edit-post/".concat(this.$route.params.postid)).then(function (response) {
       _this.form.fill(response.data.post);
-    }), this.$store.dispatch("allCategory");
+    });
   },
   computed: {
     getallCategory: function getallCategory() {
@@ -2099,6 +2102,15 @@ __webpack_require__.r(__webpack_exports__);
           title: "new post has Ben insert"
         });
       })["catch"](function () {});
+    },
+    updateImage: function updateImage() {
+      var img = this.form.photo;
+
+      if (img.length > 100) {
+        return this.form.photo;
+      } else {
+        return "uploadpath/".concat(this.form.photo);
+      }
     }
   }
 });
@@ -82688,7 +82700,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("img", {
                         attrs: {
-                          src: _vm.form.photo,
+                          src: _vm.updateImage(),
                           alt: "",
                           width: "160",
                           height: "160"
